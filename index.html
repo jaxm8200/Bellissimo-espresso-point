@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bellissimo Espresso Point – Καφές Θεσσαλονίκη | Espresso Bar Θεσσαλονίκη</title>
+  <meta name="description" content="Bellissimo Espresso Point – Ο καλύτερος καφές στη Θεσσαλονίκη. Espresso bar στη Λεωφ. Βασιλίσσης Όλγας 41. Επισκεφθείτε μας για εξαιρετική εμπειρία καφέ." />
+  <meta name="keywords" content="καφές Θεσσαλονίκη, espresso bar Θεσσαλονίκη, καλός καφές Θεσσαλονίκη, bellissimo espresso, freddo espresso Θεσσαλονίκη" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── RESET & TOKENS ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:  #FFFFFF;
+      --black:  #131313;
+      --gold:   #C89D6A;
+      --gold-light: #d9b48a;
+      --gold-dark:  #a67c4e;
+      --off-white: #f8f4ef;
+      --warm-gray: #e8e0d6;
+      --text-muted: #666;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Jost', sans-serif;
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow-soft: 0 4px 30px rgba(19,19,19,0.08);
+      --shadow-med:  0 8px 50px rgba(19,19,19,0.14);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--off-white);
+      color: var(--black);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    /* ── SCROLLBAR ──────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--off-white); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ── NAV ────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 5%;
+      background: rgba(19,19,19,0.0);
+      backdrop-filter: blur(0px);
+      transition: background var(--transition), backdrop-filter var(--transition), padding var(--transition);
+    }
+    nav.scrolled {
+      background: rgba(19,19,19,0.92);
+      backdrop-filter: blur(16px);
+      padding: 0.7rem 5%;
+    }
+
+    .nav-logo {
+      display: flex; flex-direction: column; line-height: 1;
+      text-decoration: none;
+    }
+    .nav-logo .logo-main {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
+    .nav-logo .logo-sub {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-top: 1px;
+    }
+
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--black) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2px;
+      font-weight: 500 !important;
+    }
+    .nav-cta:hover { background: var(--gold-light); color: var(--black) !important; }
+
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 2px; background: var(--white);
+      transition: var(--transition);
+    }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 99;
+      background: var(--black); flex-direction: column;
+      align-items: center; justify-content: center; gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none; color: var(--white);
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 300;
+      letter-spacing: 0.05em;
+      transition: color var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close {
+      position: absolute; top: 1.5rem; right: 5%;
+      background: none; border: none; cursor: pointer;
+      color: var(--white); font-size: 2rem; line-height: 1;
+    }
+
+    /* ── HERO ───────────────────────────────────────── */
+    #hero {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(160deg, rgba(19,19,19,0.72) 0%, rgba(19,19,19,0.45) 60%, rgba(200,157,106,0.2) 100%),
+        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&q=80') center/cover no-repeat;
+    }
+
+    /* grain overlay */
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 5%; max-width: 800px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 400; margin-bottom: 1.5rem;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.9s 0.2s forwards;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.3rem;
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 0.9s 0.35s forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: rgba(255,255,255,0.75);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      margin: 1.2rem 0 2.5rem;
+      max-width: 500px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.9s 0.5s forwards;
+    }
+
+    .hero-btns {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.9s 0.65s forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--gold); color: var(--black);
+      padding: 0.9rem 2.2rem;
+      font-family: var(--font-body); font-size: 0.82rem;
+      font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: var(--transition);
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+    }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(200,157,106,0.4);
+    }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent; color: var(--white);
+      padding: 0.9rem 2.2rem;
+      font-family: var(--font-body); font-size: 0.82rem;
+      font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; border: 1px solid rgba(255,255,255,0.4);
+      cursor: pointer; transition: var(--transition);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold); color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      color: rgba(255,255,255,0.5); font-size: 0.65rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    .hero-scroll::after {
+      content: ''; width: 1px; height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+    }
+
+    /* ── DIVIDER ────────────────────────────────────── */
+    .section-divider {
+      display: flex; align-items: center; gap: 1.5rem;
+      margin: 0 auto 3rem;
+    }
+    .section-divider::before, .section-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--warm-gray);
+    }
+    .divider-icon {
+      width: 30px; height: 30px; fill: var(--gold);
+    }
+
+    /* ── SECTIONS ───────────────────────────────────── */
+    section { padding: 6rem 5%; }
+
+    .section-label {
+      display: block;
+      font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── ABOUT ──────────────────────────────────────── */
+    #about {
+      background: var(--black);
+      color: var(--white);
+    }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-image-wrap::before {
+      content: '';
+      position: absolute; top: -20px; left: -20px; right: 20px; bottom: 20px;
+      border: 1px solid rgba(200,157,106,0.3);
+      pointer-events: none;
+    }
+    .about-img {
+      width: 100%; height: 500px; object-fit: cover;
+      filter: sepia(15%) contrast(105%);
+    }
+
+    .about-badge {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--gold); color: var(--black);
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      text-align: center;
+    }
+    .about-badge .num { font-size: 2.2rem; font-weight: 600; line-height: 1; }
+    .about-badge .lbl { font-size: 0.6rem; letter-spacing: 0.1em; margin-top: 2px; }
+
+    .about-text { display: flex; flex-direction: column; gap: 1.5rem; }
+    .about-text .section-title { color: var(--white); }
+    .about-text p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.98rem; line-height: 1.85;
+      font-weight: 300;
+    }
+    .about-text p strong { color: var(--gold); font-weight: 500; }
+
+    .about-stats {
+      display: flex; gap: 2.5rem; padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat { display: flex; flex-direction: column; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem; font-weight: 300; color: var(--gold); line-height: 1;
+    }
+    .stat-lbl {
+      font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+    }
+
+    /* ── MENU ───────────────────────────────────────── */
+    #menu { background: var(--off-white); }
+    .menu-inner { max-width: 1100px; margin: 0 auto; }
+    .menu-header { text-align: center; margin-bottom: 4rem; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--warm-gray);
+    }
+    .menu-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      position: relative; overflow: hidden;
+      transition: var(--transition);
+    }
+    .menu-card::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      height: 3px; width: 0;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+    .menu-card:hover::before { width: 100%; }
+    .menu-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
+
+    .menu-card-icon {
+      font-size: 2.2rem; margin-bottom: 1.2rem;
+    }
+    .menu-card-name {
+      font-family: var(--font-display);
+      font-size: 1.55rem; font-weight: 400;
+      margin-bottom: 0.6rem;
+    }
+    .menu-card-desc {
+      font-size: 0.85rem; color: var(--text-muted);
+      line-height: 1.7; font-weight: 300;
+    }
+    .menu-card-tag {
+      display: inline-block; margin-top: 1rem;
+      padding: 0.3rem 0.8rem;
+      background: rgba(200,157,106,0.12);
+      color: var(--gold-dark); font-size: 0.68rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+    }
+
+    /* ── WHY US ─────────────────────────────────────── */
+    #why {
+      background: var(--black);
+      color: var(--white);
+    }
+    .why-inner { max-width: 1100px; margin: 0 auto; }
+    .why-header { margin-bottom: 4rem; }
+    .why-header .section-title { color: var(--white); }
+
+    .why-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+    }
+    .why-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2.5rem 1.8rem;
+      transition: var(--transition);
+    }
+    .why-card:hover {
+      border-color: var(--gold);
+      background: rgba(200,157,106,0.05);
+      transform: translateY(-4px);
+    }
+    .why-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem; font-weight: 300;
+      color: rgba(200,157,106,0.25); line-height: 1;
+      margin-bottom: 1.2rem;
+    }
+    .why-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem; font-weight: 400;
+      color: var(--white); margin-bottom: 0.7rem;
+    }
+    .why-desc {
+      font-size: 0.85rem; color: rgba(255,255,255,0.55);
+      line-height: 1.75; font-weight: 300;
+    }
+
+    /* ── REVIEWS ────────────────────────────────────── */
+    #reviews { background: var(--off-white); }
+    .reviews-inner { max-width: 1100px; margin: 0 auto; }
+    .reviews-header { text-align: center; margin-bottom: 4rem; }
+
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+    }
+    .review-card {
+      background: var(--white);
+      padding: 2.5rem;
+      position: relative;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition);
+    }
+    .review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
+    .review-card:first-child {
+      grid-column: span 2;
+      background: var(--black); color: var(--white);
+    }
+
+    .review-quote {
+      position: absolute; top: 1.5rem; right: 2rem;
+      font-family: var(--font-display);
+      font-size: 5rem; font-weight: 600;
+      color: rgba(200,157,106,0.15); line-height: 1;
+      user-select: none;
+    }
+    .review-text {
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 300; font-style: italic;
+      line-height: 1.7; margin-bottom: 1.5rem;
+    }
+    .review-card:first-child .review-text { color: rgba(255,255,255,0.9); font-size: 1.45rem; }
+    .review-author {
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .review-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--gold); display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; font-weight: 600; color: var(--black);
+      font-family: var(--font-display); flex-shrink: 0;
+    }
+    .review-name { font-size: 0.85rem; font-weight: 500; }
+    .review-card:first-child .review-name { color: rgba(255,255,255,0.8); }
+    .review-stars { color: var(--gold); font-size: 0.75rem; letter-spacing: 2px; }
+
+    /* ── GALLERY ────────────────────────────────────── */
+    #gallery {
+      padding: 0;
+      background: var(--black);
+    }
+    .gallery-header {
+      padding: 5rem 5% 3rem;
+      text-align: center;
+    }
+    .gallery-header .section-title { color: var(--white); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 260px 260px;
+      gap: 3px;
+    }
+    .gallery-item {
+      overflow: hidden; position: relative;
+    }
+    .gallery-item:first-child { grid-row: span 2; }
+
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+      filter: sepia(10%) contrast(105%);
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-item-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(19,19,19,0.6) 0%, transparent 50%);
+      opacity: 0; transition: var(--transition);
+    }
+    .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+    /* ── CONTACT ────────────────────────────────────── */
+    #contact { background: var(--off-white); }
+    .contact-inner { max-width: 1100px; margin: 0 auto; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.5fr;
+      gap: 5rem; align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 2.5rem; }
+
+    .contact-block { display: flex; flex-direction: column; gap: 0.5rem; }
+    .contact-block-label {
+      font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
+    }
+    .contact-block-value {
+      font-size: 0.95rem; color: var(--black); font-weight: 400; line-height: 1.6;
+    }
+    .contact-block a {
+      color: var(--black); text-decoration: none;
+      transition: color var(--transition);
+    }
+    .contact-block a:hover { color: var(--gold); }
+
+    .hours-table { display: flex; flex-direction: column; gap: 0.35rem; }
+    .hours-row {
+      display: flex; justify-content: space-between;
+      font-size: 0.88rem; padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(200,157,106,0.15);
+    }
+    .hours-row .day { color: var(--black); font-weight: 400; }
+    .hours-row .time { color: var(--gold-dark); font-weight: 300; }
+
+    .contact-map {
+      overflow: hidden;
+      border-radius: 2px;
+      box-shadow: var(--shadow-med);
+    }
+    .contact-map iframe {
+      width: 100%; height: 420px; border: 0; display: block;
+      filter: grayscale(20%) contrast(105%);
+    }
+
+    .call-btn-mobile {
+      display: none; margin-top: 1.5rem;
+    }
+    .call-btn-mobile a {
+      display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+      background: var(--gold); color: var(--black);
+      padding: 1rem 2rem; text-decoration: none;
+      font-weight: 600; font-size: 1rem;
+      border-radius: 2px;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: var(--black); color: rgba(255,255,255,0.5);
+      padding: 3rem 5%;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.8rem; font-weight: 300;
+      color: var(--gold);
+    }
+    .footer-tagline { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; }
+    .footer-sep { width: 40px; height: 1px; background: rgba(200,157,106,0.3); }
+    .footer-bottom { font-size: 0.75rem; }
+
+    /* ── ANIMATIONS ─────────────────────────────────── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1; transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid  { grid-template-columns: repeat(2, 1fr); }
+      .about-inner { gap: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 4rem 5%; }
+
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero-title { font-size: clamp(2.5rem, 10vw, 4rem); }
+
+      .about-inner { grid-template-columns: 1fr; }
+      .about-image-wrap::before { display: none; }
+      .about-badge { width: 85px; height: 85px; }
+      .about-badge .num { font-size: 1.8rem; }
+      .about-stats { gap: 1.5rem; }
+
+      .menu-grid { grid-template-columns: 1fr; gap: 1px; }
+
+      .why-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+      .reviews-grid { grid-template-columns: 1fr; }
+      .review-card:first-child { grid-column: span 1; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 200px 200px 200px;
+      }
+      .gallery-item:first-child { grid-column: span 2; grid-row: span 1; }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+      .call-btn-mobile { display: block; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: unset; }
+      .gallery-item:first-child { grid-column: auto; grid-row: auto; }
+      .gallery-item { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ────────────────────────────────────────── -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">
+      <span class="logo-main">Bellissimo</span>
+      <span class="logo-sub">Espresso Point</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">Σχετικά</a></li>
+      <li><a href="#menu">Μενού</a></li>
+      <li><a href="#why">Γιατί Εμείς</a></li>
+      <li><a href="#reviews">Κριτικές</a></li>
+      <li><a href="#contact" class="nav-cta">Βρες Μας</a></li>
+    </ul>
+    <button class="nav-hamburger" id="menuToggle" aria-label="Μενού">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── MOBILE MENU ─────────────────────────────────── -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="menuClose">✕</button>
+    <a href="#about"   onclick="closeMobile()">Σχετικά</a>
+    <a href="#menu"    onclick="closeMobile()">Μενού</a>
+    <a href="#why"     onclick="closeMobile()">Γιατί Εμείς</a>
+    <a href="#reviews" onclick="closeMobile()">Κριτικές</a>
+    <a href="#gallery" onclick="closeMobile()">Gallery</a>
+    <a href="#contact" onclick="closeMobile()">Επικοινωνία</a>
+  </div>
+
+  <!-- ── HERO ───────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Θεσσαλονίκη · Εσπρεσσάδικο</span>
+      <h1 class="hero-title">
+        Η τέλεια<br>
+        <em>γεύση</em><br>
+        καφέ
+      </h1>
+      <p class="hero-subtitle">
+        Στο Bellissimo ξεκινάς τη μέρα σου σωστά.
+        Αχνιστό espresso, κρεμάτο freddo και η ζεστασιά που αξίζεις.
+      </p>
+      <div class="hero-btns">
+        <a href="tel:2310821906" class="btn-primary">
+          <span>📞</span> Κάλεσε μας
+        </a>
+        <a href="https://maps.google.com/?q=Λεωφ.+Βασιλίσσης+Όλγας+41,+Θεσσαλονίκη" target="_blank" rel="noopener" class="btn-outline">
+          <span>📍</span> Βρες μας στον χάρτη
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">Κάτω</div>
+  </section>
+
+  <!-- ── ABOUT ──────────────────────────────────────── -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-image-wrap reveal">
+        <img
+          class="about-img"
+          src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&q=80"
+          alt="Barista ετοιμάζει espresso στο Bellissimo Espresso Point Θεσσαλονίκη"
+          loading="lazy"
+        />
+        <div class="about-badge">
+          <span class="num">100%</span>
+          <span class="lbl">Ποιότητα</span>
+        </div>
+      </div>
+
+      <div class="about-text reveal reveal-delay-2">
+        <span class="section-label">Η Ιστορία μας</span>
+        <h2 class="section-title">Το αγαπημένο στέκι<br><em style="color:var(--gold)">της γειτονιάς</em></h2>
+        <p>
+          Στο <strong>Bellissimo Espresso Point</strong> πιστεύουμε ότι ένας καλός καφές μπορεί να αλλάξει τη μέρα σου. Βρισκόμαστε στη <strong>Λεωφ. Βασιλίσσης Όλγας 41</strong>, στο κέντρο της Θεσσαλονίκης, και καθημερινά σερβίρουμε το καλύτερο espresso για τους κατοίκους και επισκέπτες της πόλης.
+        </p>
+        <p>
+          Από το πρώτο πρωινό espresso μέχρι το απογευματινό freddo cappuccino, κάθε φλιτζάνι φτιάχνεται με μεράκι, <strong>εκλεκτά blends</strong> και τεχνική που σέβεται τον καφέ. Εδώ δεν πίνεις απλώς καφέ — ζεις μια εμπειρία.
+        </p>
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-num">★ 4.8</span>
+            <span class="stat-lbl">Google Rating</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">07:00</span>
+            <span class="stat-lbl">Ανοίγουμε</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">7/7</span>
+            <span class="stat-lbl">Ημέρες</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MENU ───────────────────────────────────────── -->
+  <section id="menu">
+    <div class="menu-inner">
+      <div class="menu-header reveal">
+        <span class="section-label">Αυτό που Σερβίρουμε</span>
+        <h2 class="section-title">Ο Καφές μας &<br><em style="font-style:italic;color:var(--gold-dark)">τα Προϊόντα μας</em></h2>
+      </div>
+
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-icon">☕</div>
+          <div class="menu-card-name">Espresso</div>
+          <p class="menu-card-desc">Σφιχτό, αρωματικό, με κρέμα χρυσαφένια. Η βάση κάθε σωστού καφέ. Το αγαπημένο της γειτονιάς κάθε πρωί.</p>
+          <span class="menu-card-tag">Κλασικό</span>
+        </div>
+
+        <div class="menu-card reveal reveal-delay-1">
+          <div class="menu-card-icon">🧊</div>
+          <div class="menu-card-name">Freddo Espresso</div>
+          <p class="menu-card-desc">Διπλός espresso χτυπημένος με παγάκια για βελούδινη αφρόκρεμα. Δροσιά και γεύση μαζί — ιδανικό για τις ζεστές μέρες.</p>
+          <span class="menu-card-tag">Bestseller</span>
+        </div>
+
+        <div class="menu-card reveal reveal-delay-2">
+          <div class="menu-card-icon">🍦</div>
+          <div class="menu-card-name">Freddo Cappuccino</div>
+          <p class="menu-card-desc">Freddo espresso με αφρόγαλα παγωμένο, χτυπημένο στο χέρι. Γλυκό, δροσιστικό, αναπόφευκτο.</p>
+          <span class="menu-card-tag">Αγαπημένο</span>
+        </div>
+
+        <div class="menu-card reveal reveal-delay-3">
+          <div class="menu-card-icon">🥛</div>
+          <div class="menu-card-name">Latte</div>
+          <p class="menu-card-desc">Espresso με ατμισμένο γάλα σε τέλεια αναλογία. Βελούδινο, απαλό, για όσους αγαπούν τον καφέ τους ήπιο.</p>
+          <span class="menu-card-tag">Μαλακό</span>
+        </div>
+
+        <div class="menu-card reveal reveal-delay-1">
+          <div class="menu-card-icon">🍊</div>
+          <div class="menu-card-name">Φυσικοί Χυμοί</div>
+          <p class="menu-card-desc">Φρεσκοστυμμένοι χυμοί από εσπεριδοειδή και εποχιακά φρούτα. Η πιο φρέσκια επιλογή δίπλα στον καφέ σου.</p>
+          <span class="menu-card-tag">Φρέσκο</span>
+        </div>
+
+        <div class="menu-card reveal reveal-delay-2">
+          <div class="menu-card-icon">🥐</div>
+          <div class="menu-card-name">Σνακ & Μπουκιές</div>
+          <p class="menu-card-desc">Κρουασάν, σάντουιτς, κουλούρια και μικρές απολαύσεις που συνοδεύουν τέλεια κάθε καφέ. Γρήγορα, νόστιμα, φρέσκα.</p>
+          <span class="menu-card-tag">Γευστικό</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY US ─────────────────────────────────────── -->
+  <section id="why">
+    <div class="why-inner">
+      <div class="why-header reveal">
+        <span class="section-label">Η Διαφορά μας</span>
+        <h2 class="section-title">Γιατί να<br><em style="color:var(--gold)">μας επιλέξεις</em></h2>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-num">01</div>
+          <div class="why-title">Ποιοτικός Καφές</div>
+          <p class="why-desc">Επιλεγμένα blends από τους καλύτερους παραγωγούς, σωστά αλεσμένα και εξτρακτάρουμε με μεράκι κάθε φορά.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-num">02</div>
+          <div class="why-title">Φιλικό Προσωπικό</div>
+          <p class="why-desc">Χαμόγελο, ζεστασιά και υπομονή σε κάθε παραγγελία. Το προσωπικό μας σε κάνει να νιώθεις σπίτι σου.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-num">03</div>
+          <div class="why-title">Τοπικό Αγαπημένο</div>
+          <p class="why-desc">Χρόνια στην καρδιά της Θεσσαλονίκης, αγαπημένο στέκι γειτόνων, φοιτητών και επαγγελματιών της περιοχής.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <div class="why-num">04</div>
+          <div class="why-title">Γρήγορη Εξυπηρέτηση</div>
+          <p class="why-desc">Ο καφές σου έτοιμος σε χρόνο μηδέν. Γιατί ξέρουμε ότι η μέρα σε περιμένει και σεβόμαστε τον χρόνο σου.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── REVIEWS ─────────────────────────────────────── -->
+  <section id="reviews">
+    <div class="reviews-inner">
+      <div class="reviews-header reveal">
+        <span class="section-label">Τι Λένε οι Πελάτες μας</span>
+        <h2 class="section-title">Αληθινές<br><em style="font-style:italic;color:var(--gold-dark)">Εμπειρίες</em></h2>
+      </div>
+
+      <div class="reviews-grid">
+        <!-- Featured review -->
+        <div class="review-card reveal">
+          <div class="review-quote">"</div>
+          <p class="review-text">
+            Ο καλύτερος καφές στη Θεσσαλονίκη. Κάθε φορά που έρχομαι στην πόλη, το Bellissimo είναι η πρώτη μου στάση — δεν φεύγω χωρίς τον espresso μου.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:var(--gold)">Μ</div>
+            <div>
+              <div class="review-name">Μαρία Παπαδοπούλου</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-quote">"</div>
+          <p class="review-text">Μαγαζί διαμαντάκι. Φοβερός καφές και απίστευτα ευγενικό προσωπικό. Τους συστήνω ανεπιφύλακτα!</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:var(--black);color:var(--gold)">Κ</div>
+            <div>
+              <div class="review-name">Κώστας Νικολάου</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-quote">"</div>
+          <p class="review-text">Από τα λίγα μαγαζιά στη Θεσσαλονίκη με πραγματικά σωστή ποιότητα καφέ. Μόνιμος πελάτης πια!</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:var(--warm-gray);color:var(--black)">Α</div>
+            <div>
+              <div class="review-name">Αντώνης Δημητρίου</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-quote">"</div>
+          <p class="review-text">Το καλύτερο μαγαζί για καφέ στη γειτονιά. Υπέροχη εξυπηρέτηση, γρήγορο, νόστιμο. Μπράβο τους!</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:var(--gold-dark);color:var(--white)">Σ</div>
+            <div>
+              <div class="review-name">Σοφία Γεωργίου</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-quote">"</div>
+          <p class="review-text">Freddo cappuccino που σε αφήνει άφωνο. Το έχω δοκιμάσει σε πολλά μαγαζιά — εδώ είναι απλά ξεχωριστό.</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:var(--black);color:var(--gold)">Ν</div>
+            <div>
+              <div class="review-name">Νίκος Αλεξάνδρου</div>
+              <div class="review-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALLERY ─────────────────────────────────────── -->
+  <section id="gallery">
+    <div class="gallery-header reveal">
+      <span class="section-label">Η Ατμόσφαιρά μας</span>
+      <h2 class="section-title" style="color:var(--white)">Στιγμές<br><em style="color:var(--gold)">Bellissimo</em></h2>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80" alt="Espresso bar Θεσσαλονίκη - Bellissimo" loading="lazy" />
+        <div class="gallery-item-overlay"></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=600&q=80" alt="Freddo espresso παρασκευή" loading="lazy" />
+        <div class="gallery-item-overlay"></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&q=80" alt="Barista καφές Θεσσαλονίκη" loading="lazy" />
+        <div class="gallery-item-overlay"></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80" alt="Latte art καφές" loading="lazy" />
+        <div class="gallery-item-overlay"></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=600&q=80" alt="Coffee shop εσωτερικό" loading="lazy" />
+        <div class="gallery-item-overlay"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ─────────────────────────────────────── -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="contact-grid">
+
+        <div class="contact-info">
+          <div class="reveal">
+            <span class="section-label">Επικοινωνία</span>
+            <h2 class="section-title">Βρες μας<br><em style="font-style:italic;color:var(--gold-dark)">σήμερα</em></h2>
+          </div>
+
+          <div class="contact-block reveal">
+            <span class="contact-block-label">📍 Διεύθυνση</span>
+            <span class="contact-block-value">
+              Λεωφ. Βασιλίσσης Όλγας 41<br>
+              Θεσσαλονίκη 54641
+            </span>
+          </div>
+
+          <div class="contact-block reveal">
+            <span class="contact-block-label">📞 Τηλέφωνο</span>
+            <span class="contact-block-value">
+              <a href="tel:2310821906">2310 821 906</a>
+            </span>
+          </div>
+
+          <div class="contact-block reveal">
+            <span class="contact-block-label">🕐 Ώρες Λειτουργίας</span>
+            <div class="hours-table">
+              <div class="hours-row"><span class="day">Δευτέρα</span><span class="time">07:00 – 22:00</span></div>
+              <div class="hours-row"><span class="day">Τρίτη</span><span class="time">07:00 – 22:00</span></div>
+              <div class="hours-row"><span class="day">Τετάρτη</span><span class="time">07:00 – 22:00</span></div>
+              <div class="hours-row"><span class="day">Πέμπτη</span><span class="time">07:00 – 22:00</span></div>
+              <div class="hours-row"><span class="day">Παρασκευή</span><span class="time">07:00 – 22:00</span></div>
+              <div class="hours-row"><span class="day">Σάββατο</span><span class="time">08:00 – 22:00</span></div>
+              <div class="hours-row"><span class="day">Κυριακή</span><span class="time">08:00 – 22:00</span></div>
+            </div>
+          </div>
+
+          <!-- Mobile call button -->
+          <div class="call-btn-mobile">
+            <a href="tel:2310821906">📞 Κάλεσε Μας Τώρα</a>
+          </div>
+        </div>
+
+        <div class="contact-map reveal reveal-delay-2">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3028.3!2d22.9436!3d40.6296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a838f8a4c34e91%3A0x0!2s%CE%9B%CE%B5%CF%89%CF%86.+%CE%92%CE%B1%CF%83%CE%B9%CE%BB%CE%AF%CF%83%CF%83%CE%B7%CF%82+%CE%8C%CE%BB%CE%B3%CE%B1%CF%82+41%2C+%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7+546+41!5e0!3m2!1sel!2sgr!4v1234567890"
+            title="Bellissimo Espresso Point - Χάρτης Θεσσαλονίκη"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Bellissimo Espresso Point</div>
+      <p class="footer-tagline">Καφές Θεσσαλονίκη · Espresso Bar · Λεωφ. Βασιλίσσης Όλγας 41</p>
+      <div class="footer-sep"></div>
+      <p class="footer-bottom">
+        © 2025 Bellissimo Espresso Point · Θεσσαλονίκη · <a href="tel:2310821906" style="color:var(--gold);text-decoration:none;">2310 821 906</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ── JS ─────────────────────────────────────────── -->
+  <script>
+    // Navbar scroll
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile menu
+    const toggle = document.getElementById('menuToggle');
+    const mobile = document.getElementById('mobileMenu');
+    const close  = document.getElementById('menuClose');
+    toggle.addEventListener('click', () => mobile.classList.add('open'));
+    close.addEventListener('click',  () => mobile.classList.remove('open'));
+    function closeMobile() { mobile.classList.remove('open'); }
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
